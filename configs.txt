@@ -11,3 +11,6 @@ pnpm create @eslint/config@1.11.0
 
 pnpm add -D eslint-config-prettier
 pnpm add -D eslint-plugin-simple-import-sort
+
+pnpm add fastify
+pnpm add dotenv@17.3.1
