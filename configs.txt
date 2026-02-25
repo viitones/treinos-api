@@ -16,3 +16,5 @@ pnpm add fastify
 pnpm add dotenv@17.3.1
 
 pnpm add zod fastify-type-provider-zod@6.1.0
+
+pnpm add @fastify/swagger@9.7.0 @fastify/swagger-ui@5.2.5
