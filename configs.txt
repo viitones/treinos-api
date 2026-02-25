@@ -6,3 +6,8 @@ npx tsc --init
 npx tsc
 
 pnpm add -D tsx@4.21.0
+
+pnpm create @eslint/config@1.11.0
+
+pnpm add -D eslint-config-prettier
+pnpm add -D eslint-plugin-simple-import-sort
