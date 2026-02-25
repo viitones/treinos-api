@@ -1,0 +1,8 @@
+pnpm init
+pnpm add typescript@5.9.3 @types/node@24 -D
+pnpm add prettier@3.8.1 eslint@9.39.2 -D
+
+npx tsc --init
+npx tsc
+
+pnpm add -D tsx@4.21.0
