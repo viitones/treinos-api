@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import fastifyCors from "@fastify/cors";
 import fastifySwagger from "@fastify/swagger";
-import fastifySwaggerUI from "@fastify/swagger-ui";
+import fastifyApiReference from "@scalar/fastify-api-reference";
 import Fastify from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
 import {
@@ -38,16 +38,39 @@ await app.register(fastifySwagger, {
   transform: jsonSchemaTransform,
 });
 
-await app.register(fastifySwaggerUI, {
-  routePrefix: "/docs",
-});
-
-
 await app.register(fastifyCors, {
   origin: [process.env.TRUSTED_ORIGIN ?? "http://localhost:3000"],
   credentials: true,
 })
 
+await app.register(fastifyApiReference, {
+  routePrefix: "/docs",
+  configuration: {
+    sources: [
+      {
+        title: "Treinos API Reference",
+        slug: "treinos-api",
+        url: "/swagger.json",
+      },
+      {
+        title: "Auth API Reference",
+        slug: "auth-api",
+        url: "/api/auth/open-api/generate-schema",
+      }
+    ]
+  }
+})
+
+app.withTypeProvider<ZodTypeProvider>().route({
+  method: "GET",
+  url: "/swagger.json",
+  schema: {
+    hide: true,
+  },
+  handler: async () => {
+    return app.swagger();
+  }
+});
 
 app.withTypeProvider<ZodTypeProvider>().route({
   method: "GET",
@@ -107,8 +130,9 @@ app.route({
 
 
 try {
-  await app.listen({ port: Number(process.env.PORT ?? 3000) });
+  await app.listen({ port: +(process.env.PORT ?? 3000) });
+  
 } catch (err) {
-  app.log.error(err);
+  app.log.error(err);   
   process.exit(1);
 }

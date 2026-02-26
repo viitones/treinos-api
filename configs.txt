@@ -35,3 +35,5 @@ npx prisma db push
 npx prisma generate
 
 pnpm add @fastify/cors@11.2.0
+
+pnpm add @scalar/fastify-api-reference@1.44.20
