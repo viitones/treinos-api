@@ -25,3 +25,13 @@ npx prisma init
 
 docker compose up -d
 npx prisma db push
+
+pnpm add better-auth@1.4.18
+
+npx prisma generate
+
+npx @better-auth/cli@1.4.18 generate
+npx prisma db push
+npx prisma generate
+
+pnpm add @fastify/cors@11.2.0
