@@ -62,6 +62,7 @@ model WorkoutDay {
   exercises                  WorkoutExercise[]
   sessions                   WorkoutSession[]
   estimatedDurationInSeconds Int
+  coverImageUrl              String?
 }
 
 model WorkoutExercise {

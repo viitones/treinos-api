@@ -31,7 +31,7 @@ await app.register(fastifySwagger, {
     servers: [
       {
         description: "Localhost",
-        url: "http://localhost:3000",
+        url: "http://localhost:3001",
       },
     ],
   },
@@ -64,6 +64,8 @@ await app.register(fastifyApiReference, {
 
 app.register(swaggerRoutes)
 
-app.register(workoutPlanRoutes)
+app.register(workoutPlanRoutes, {
+  prefix: "/workout-plans"
+})
 
 app.register(authRoutes)
