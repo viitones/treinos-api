@@ -31,7 +31,7 @@ interface OutputDto {
     weekDay: WeekDay;
     isRest: boolean;
     estimatedDurationInSeconds: number;
-    coverImageUrl: string | undefined;
+    coverImageUrl?: string;
     exercises: Array<{
       order: number;
       name: string;
