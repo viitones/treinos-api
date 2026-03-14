@@ -28,8 +28,19 @@ export const workoutPlanSchema = z.object({
 export const errorSchema = z.object({
   error: z.string(),
   code: z.string(),
+  message: z.string().optional(),
 })
 
 export const workoutSessionSchema = z.object({
   userWorkoutSessionId: z.uuid(),
+})
+
+export const updateWorkoutSessionBodySchema = z.object({
+  completedAt: z.string().datetime(),
+})
+
+export const updateWorkoutSessionResponseSchema = z.object({
+  id: z.string().uuid(),
+  completedAt: z.string().datetime(),
+  startedAt: z.string().datetime(),
 })
