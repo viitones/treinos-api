@@ -19,7 +19,7 @@ export function workoutPlanRoutes(app: FastifyInstance) {
       body: workoutPlanSchema.omit({ id: true }),
       response: {
         201: workoutPlanSchema,
-        // 400: errorSchema,
+        400: errorSchema,
         401: errorSchema,
         404: errorSchema,
         500: errorSchema,
