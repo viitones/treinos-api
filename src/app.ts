@@ -11,6 +11,7 @@ import {
 } from "fastify-type-provider-zod";
 
 import { authRoutes } from "./routes/auth.js";
+import { homeRoutes } from "./routes/home.js";
 import { swaggerRoutes } from "./routes/swagger.js";
 import { workoutPlanRoutes } from "./routes/workout-plan.js";
 
@@ -63,6 +64,10 @@ await app.register(fastifyApiReference, {
 })
 
 app.register(swaggerRoutes)
+
+app.register(homeRoutes, {
+  prefix: "/home"
+})
 
 app.register(workoutPlanRoutes, {
   prefix: "/workout-plans"
